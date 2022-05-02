@@ -1,11 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Customer from "./component/customer";
 
 function App() {
   return (
     <div className="gray-background">
-      <img src={logo} alt={"logo"} />
-      <p>management </p>
+      <Customer name={"Sangkun"} age={23} gender={"male"} career={"GnB"} />
     </div>
   );
 }

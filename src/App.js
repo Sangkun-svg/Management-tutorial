@@ -1,6 +1,14 @@
 import "./App.css";
 import { Customer } from "./component/customer";
-
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Paper,
+} from "@mui/material";
+import { Component } from "react";
 const customers = [
   {
     id: 1,
@@ -28,23 +36,36 @@ const customers = [
   },
 ];
 
-function App() {
-  return (
-    <div className="gray-background">
-      {customers.map((customers) => {
-        return (
-          <Customer
-            id={customers.id}
-            image={customers.image}
-            name={customers.name}
-            age={customers.age}
-            gender={customers.gender}
-            career={customers.career}
-          />
-        );
-      })}
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Paper>
+        <Table>
+          <TableHead>
+            <TableRow>
+              {Object.keys(customers[0]).map((rows) => {
+                return <TableCell>{rows}</TableCell>;
+              })}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {customers.map((customers) => {
+              return (
+                <Customer
+                  id={customers.id}
+                  image={customers.image}
+                  name={customers.name}
+                  age={customers.age}
+                  gender={customers.gender}
+                  career={customers.career}
+                />
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Paper>
+    );
+  }
 }
 
 export default App;

@@ -7,7 +7,6 @@ import { Component } from "react";
 class Customer extends Component {
   render() {
     const { id, name, image, age, career, gender } = this.props;
-    console.log("Customer image : ", image);
     // react component built in function , 항상 수행되는 내용이다.
     return (
       <div>

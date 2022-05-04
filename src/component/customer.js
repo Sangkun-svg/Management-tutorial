@@ -13,7 +13,11 @@ class Customer extends Component {
         <TableRow>
           <TableCell>{id}</TableCell>
           <TableCell>
-            <img src={image} alt={"profile"} />
+            <img
+              src={image}
+              alt={"profile"}
+              style={{ width: 64, height: 64 }}
+            />
           </TableCell>
           <TableCell>{name}</TableCell>
           <TableCell>{age}</TableCell>

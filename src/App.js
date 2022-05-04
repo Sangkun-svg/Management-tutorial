@@ -1,5 +1,6 @@
 import "./App.css";
 import { Customer } from "./component/customer";
+import CustomerAdd from "./component/customerAdd";
 import axios from "axios";
 import {
   Table,
@@ -22,7 +23,7 @@ class App extends Component {
     this.callApi()
       .then((res) => this.setState({ customers: res }))
       .catch((error) => {
-        console.error(error);
+        console.error("error : ", error);
       });
   }
   progress = () => {
@@ -34,46 +35,57 @@ class App extends Component {
     const res = await axios.get("/api/customers");
     return res.data;
   };
+
   render() {
     const { customers, completed } = this.state;
     return (
-      <Paper>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {customers
-                ? Object.keys(customers[0])?.map((rows) => {
-                    return <TableCell>{rows}</TableCell>;
-                  })
-                : ""}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {customers ? (
-              customers?.map((customers) => {
-                return (
-                  <Customer
-                    id={customers.id}
-                    image={customers.image}
-                    name={customers.name}
-                    age={customers.age}
-                    gender={customers.gender}
-                    career={customers.career}
-                  />
-                );
-              })
-            ) : (
-              <>
-                <TableRow>
-                  <TableCell colSpan={6} align={"center"}>
-                    <CircularProgress variant="determinate" value={completed} />
-                  </TableCell>
-                </TableRow>
-              </>
-            )}
-          </TableBody>
-        </Table>
-      </Paper>
+      <>
+        <Paper>
+          <Table>
+            <TableHead>
+              <TableRow>
+                {customers
+                  ? Object.keys(customers[0])?.map((rows, index) => {
+                      return (
+                        <TableCell key={`customerColumn_${index}`}>
+                          {rows}
+                        </TableCell>
+                      );
+                    })
+                  : ""}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {customers ? (
+                customers?.map((customers) => {
+                  return (
+                    <Customer
+                      id={customers.id}
+                      age={customers.age}
+                      name={customers.name}
+                      image={customers.image}
+                      career={customers.career}
+                      gender={customers.gender}
+                    />
+                  );
+                })
+              ) : (
+                <>
+                  <TableRow>
+                    <TableCell colSpan={6} align={"center"}>
+                      <CircularProgress
+                        variant="determinate"
+                        value={completed}
+                      />
+                    </TableCell>
+                  </TableRow>
+                </>
+              )}
+            </TableBody>
+          </Table>
+        </Paper>
+        <CustomerAdd />
+      </>
     );
   }
 }

@@ -28,10 +28,10 @@ class CustomerAdd extends Component {
   };
 
   handleFormSubmit = (e) => {
+    console.log("handleFormSubmit");
     e.preventDefault();
-    this.addCustomer().then((res) => {
-      console.log(res.data);
-    });
+    this.addCustomer().then(() => {});
+    this.props.stateRefresh();
   };
 
   addCustomer = async () => {

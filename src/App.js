@@ -14,10 +14,27 @@ import {
 import { Component } from "react";
 
 class App extends Component {
-  state = {
-    customers: "",
-    completed: 0,
+  constructor(props) {
+    super(props);
+    this.state = {
+      customers: "",
+      completed: 0,
+    };
+  }
+
+  stateRefresh = () => {
+    console.log("stateRefresh!!");
+    this.setState({
+      customers: "",
+      completed: 0,
+    });
+    this.callApi()
+      .then((res) => this.setState({ customers: res }))
+      .catch((error) => {
+        console.error("error : ", error);
+      });
   };
+
   componentDidMount() {
     this.timer = setInterval(this.progress, 20);
     this.callApi()
@@ -84,7 +101,7 @@ class App extends Component {
             </TableBody>
           </Table>
         </Paper>
-        <CustomerAdd />
+        <CustomerAdd stateRefresh={this.stateRefresh} />
       </>
     );
   }

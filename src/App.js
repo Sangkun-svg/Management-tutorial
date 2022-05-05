@@ -61,15 +61,19 @@ class App extends Component {
           <Table>
             <TableHead>
               <TableRow>
-                {customers
-                  ? Object.keys(customers[0])?.map((rows, index) => {
-                      return (
-                        <TableCell key={`customerColumn_${index}`}>
-                          {rows}
-                        </TableCell>
-                      );
-                    })
-                  : ""}
+                {customers ? (
+                  <>
+                    <TableCell>id</TableCell>
+                    <TableCell>image</TableCell>
+                    <TableCell>name</TableCell>
+                    <TableCell>age</TableCell>
+                    <TableCell>gender</TableCell>
+                    <TableCell>career</TableCell>
+                    <TableCell>setting</TableCell>
+                  </>
+                ) : (
+                  ""
+                )}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -79,10 +83,11 @@ class App extends Component {
                     <Customer
                       id={customers.id}
                       age={customers.age}
-                      name={customers.name}
                       image={customers.image}
+                      name={customers.name}
                       career={customers.career}
                       gender={customers.gender}
+                      stateRefresh={this.stateRefresh}
                     />
                   );
                 })

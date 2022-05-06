@@ -11,6 +11,7 @@ import {
   Paper,
   CircularProgress,
 } from "@mui/material";
+import Header from "./component/header";
 import { Component } from "react";
 
 class App extends Component {
@@ -23,7 +24,6 @@ class App extends Component {
   }
 
   stateRefresh = () => {
-    console.log("stateRefresh!!");
     this.setState({
       customers: "",
       completed: 0,
@@ -57,6 +57,8 @@ class App extends Component {
     const { customers, completed } = this.state;
     return (
       <>
+        <Header />
+        <CustomerAdd stateRefresh={this.stateRefresh} />
         <Paper>
           <Table>
             <TableHead>
@@ -106,7 +108,6 @@ class App extends Component {
             </TableBody>
           </Table>
         </Paper>
-        <CustomerAdd stateRefresh={this.stateRefresh} />
       </>
     );
   }

@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import Header from "./component/header";
 import { Component } from "react";
+import { Login } from "./component/login";
 
 class App extends Component {
   constructor(props) {
@@ -53,63 +54,66 @@ class App extends Component {
     return res.data;
   };
 
+  // render() {
+  //   const { customers, completed } = this.state;
+  //   return (
+  //     <>
+  //       <Header />
+  //       <CustomerAdd stateRefresh={this.stateRefresh} />
+  //       <Paper>
+  //         <Table>
+  //           <TableHead>
+  //             <TableRow>
+  //               {customers ? (
+  //                 <>
+  //                   <TableCell>id</TableCell>
+  //                   <TableCell>image</TableCell>
+  //                   <TableCell>name</TableCell>
+  //                   <TableCell>age</TableCell>
+  //                   <TableCell>gender</TableCell>
+  //                   <TableCell>career</TableCell>
+  //                   <TableCell>setting</TableCell>
+  //                 </>
+  //               ) : (
+  //                 ""
+  //               )}
+  //             </TableRow>
+  //           </TableHead>
+  //           <TableBody>
+  //             {customers ? (
+  //               customers?.map((customers) => {
+  //                 return (
+  //                   <Customer
+  //                     id={customers.id}
+  //                     age={customers.age}
+  //                     image={customers.image}
+  //                     name={customers.name}
+  //                     career={customers.career}
+  //                     gender={customers.gender}
+  //                     stateRefresh={this.stateRefresh}
+  //                   />
+  //                 );
+  //               })
+  //             ) : (
+  //               <>
+  //                 <TableRow>
+  //                   <TableCell colSpan={6} align={"center"}>
+  //                     <CircularProgress
+  //                       variant="determinate"
+  //                       value={completed}
+  //                     />
+  //                   </TableCell>
+  //                 </TableRow>
+  //               </>
+  //             )}
+  //           </TableBody>
+  //         </Table>
+  //       </Paper>
+  //     </>
+  //   );
+  // }
   render() {
-    const { customers, completed } = this.state;
-    return (
-      <>
-        <Header />
-        <CustomerAdd stateRefresh={this.stateRefresh} />
-        <Paper>
-          <Table>
-            <TableHead>
-              <TableRow>
-                {customers ? (
-                  <>
-                    <TableCell>id</TableCell>
-                    <TableCell>image</TableCell>
-                    <TableCell>name</TableCell>
-                    <TableCell>age</TableCell>
-                    <TableCell>gender</TableCell>
-                    <TableCell>career</TableCell>
-                    <TableCell>setting</TableCell>
-                  </>
-                ) : (
-                  ""
-                )}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {customers ? (
-                customers?.map((customers) => {
-                  return (
-                    <Customer
-                      id={customers.id}
-                      age={customers.age}
-                      image={customers.image}
-                      name={customers.name}
-                      career={customers.career}
-                      gender={customers.gender}
-                      stateRefresh={this.stateRefresh}
-                    />
-                  );
-                })
-              ) : (
-                <>
-                  <TableRow>
-                    <TableCell colSpan={6} align={"center"}>
-                      <CircularProgress
-                        variant="determinate"
-                        value={completed}
-                      />
-                    </TableCell>
-                  </TableRow>
-                </>
-              )}
-            </TableBody>
-          </Table>
-        </Paper>
-      </>
-    );
+    return <Login />;
   }
 }
 

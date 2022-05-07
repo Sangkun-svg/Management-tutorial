@@ -76,6 +76,7 @@ class CustomerAdd extends Component {
     const config = {
       headers: { "content-type": "multipart/form-data" },
     };
+
     return await post(url, formData, config);
   };
 

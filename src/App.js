@@ -1,9 +1,7 @@
 import "./App.css";
-import { Login } from "./component/login";
-import { Register } from "./component/register";
+import { Login, Register, NotFoundErrorPage } from "./component";
 import { Link, Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { Button } from "@mui/material";
-import { NotFound } from "./component/NotfoundErr";
 import styled from "@emotion/styled";
 
 const App = () => {
@@ -24,7 +22,7 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<NotFound />} />
+        <Route path="/" element={<NotFoundErrorPage />} />
       </Routes>
     </Router>
   );

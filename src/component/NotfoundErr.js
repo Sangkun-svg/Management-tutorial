@@ -1,6 +1,6 @@
 import React from "react";
 
-export const NotFound = () => {
+export const NotFoundErrorPage = () => {
   return (
     <>
       <h1>Not Found</h1>

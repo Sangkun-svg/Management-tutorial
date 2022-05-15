@@ -1,4 +1,3 @@
-import "./App.css";
 import { Login, Register, NotFoundErrorPage } from "./component";
 import { UserInfo } from "./component/user";
 import { Link, Route, Routes, BrowserRouter as Router } from "react-router-dom";

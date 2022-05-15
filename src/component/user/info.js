@@ -1,5 +1,4 @@
 import { TableRow, TableCell } from "@mui/material";
-import { CustomerDelete } from "./customerDelete";
 
 export const UserInfo = () => {
   const { id, name, image, age, career, gender } = this.props;
@@ -15,9 +14,6 @@ export const UserInfo = () => {
         <TableCell>{age}</TableCell>
         <TableCell>{gender}</TableCell>
         <TableCell>{career}</TableCell>
-        <TableCell>
-          <CustomerDelete id={id} stateRefresh={this.props.stateRefresh} />
-        </TableCell>
       </TableRow>
     </>
   );

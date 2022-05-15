@@ -1,5 +1,6 @@
 import "./App.css";
 import { Login, Register, NotFoundErrorPage } from "./component";
+import { UserInfo } from "./component/user";
 import { Link, Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { Button } from "@mui/material";
 import styled from "@emotion/styled";
@@ -22,6 +23,7 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/info" element={<UserInfo />} />
         <Route path="/" element={<NotFoundErrorPage />} />
       </Routes>
     </Router>

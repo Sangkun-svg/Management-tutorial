@@ -1,24 +1,33 @@
 import "./App.css";
-import { Component } from "react";
 import { Login } from "./component/login";
 import { Register } from "./component/register";
+import { Link, Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Button } from "@mui/material";
+import { NotFound } from "./component/NotfoundErr";
 import styled from "@emotion/styled";
 
-class App extends Component {
-  render() {
-    return (
-      <Wrap>
-        <Login />
-        <Register />
-      </Wrap>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Router>
+      <header>
+        <Link to={"/"}>
+          <Button>main</Button>
+        </Link>
+        <Link to={"/login"}>
+          <Button>Sign In</Button>
+        </Link>
+        <Link to={"/register"}>
+          <Button>Sign Up</Button>
+        </Link>
+      </header>
+      <hr />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
+};
 
-const Wrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
 export default App;

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Input, Button } from "@mui/material";
 import styled from "@emotion/styled";
-import axios from "axios";
 import { DEFAULT_URL } from "../constants/api.js";
+import { AxiosWithoutToken } from "../util/authAPIs.js";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
+  const navigate = useNavigate();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -23,7 +25,7 @@ export const Register = () => {
     setEmail(value);
   };
 
-  const clickLoginButton = async () => {
+  const requestRegister = async () => {
     const data = {
       id: id,
       password: password,
@@ -31,14 +33,8 @@ export const Register = () => {
       email: email,
     };
     const url = `${DEFAULT_URL}/api/user/register`;
-    return await axios
-      .post(url, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => console.log("res : ", res))
-      .catch((err) => console.log(err));
+    await AxiosWithoutToken({}, "POST", url, data);
+    navigate("/login");
   };
 
   return (
@@ -78,7 +74,7 @@ export const Register = () => {
       />
       <br />
 
-      <Button color="primary" onClick={clickLoginButton}>
+      <Button color="primary" onClick={requestRegister}>
         register
       </Button>
     </LoginWrapper>
